@@ -115,6 +115,8 @@ rm -rf ~/.pi/agent/extensions/delegate/sessions
 
 実行中の`pi`セッションが無い状態であれば、ディレクトリごと削除して問題ありません。次回の`delegate`呼び出し時に作り直されます。
 
+なお、本ドキュメント中の `~/.pi/agent` は既定値です。`PI_CODING_AGENT_DIR` を設定している環境では、そのディレクトリ配下に読み替えてください（本拡張は `getAgentDir()` の戻り値を使います）。
+
 ## 実行は同期・直列（真の並列実行はありません）
 
 `pi`本体のツール実行ループは、1回のアシスタントのターンに複数のツール呼び出しが含まれていても、`for`ループ＋`await`で**1件ずつ順番に**実行します（`packages/agent/src/agent-loop.ts` の `executeToolCalls`）。これは`pi`コア側の挙動であり、この拡張固有のものではありません。
