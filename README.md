@@ -166,17 +166,32 @@ handoffが使われていた場合は、末尾に`(handoff run: 3)`が付きま�
 
 ## インストール
 
-`~/.pi/agent/settings.json`（または `.pi/settings.json`）の `packages` にこのディレクトリを絶対パスまたは相対パスで追加します。
+```sh
+pi install https://github.com/high-u/pi-delegate
+```
+
+`~/.pi/agent/settings.json` の `packages` に追加されます。プロジェクトローカルに入れる場合は `-l` を付けてください（`.pi/settings.json` に書かれます）。
+
+更新と削除は次のとおりです。
+
+```sh
+pi update https://github.com/high-u/pi-delegate
+pi remove https://github.com/high-u/pi-delegate
+```
+
+### 開発時（ローカルのクローンを直接使う）
+
+クローンしたディレクトリを、絶対パスまたは相対パスで `packages` に追加します。
 
 ```json
 {
   "packages": [
-    "/home/high-u/Github/pi-delegate"
+    "/path/to/pi-delegate"
   ]
 }
 ```
 
-ローカルパスなのでコピーは行われず、このディレクトリを直接参照します。`extensions/*.ts` を編集すればすぐに反映されます（ビルド不要）。
+ローカルパスの場合はコピーが行われず、そのディレクトリを直接参照します。`extensions/*.ts` を編集すればすぐに反映されます（ビルド不要）。
 
 ## テスト
 
